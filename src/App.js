@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import AboutAutoZone from "./components/AboutUs/AboutAutoZone/AboutAutoZone";
+import AffliateProgram from "./components/AboutUs/AffliateProgram/AffliateProgram";
+import InvestorInformation from "./components/AboutUs/InvestorInformation/InvestorInformation";
+import MockData from "./components/AboutUs/MockData/MockData.json";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ul>
+        <li>
+          <Link to="/">About AutoZone</Link>
+        </li>
+        <li>
+          <Link to="/affliateProgram">Affliate Program</Link>
+        </li>
+        <li>
+          <Link to="/investorInformation">Investor Information</Link>
+        </li>
+      </ul>
+      <hr />
+      <Switch>
+        <Route exact path="/">
+          <AboutAutoZone mockData={MockData}/>
+        </Route>
+        <Route path="/affliateProgram">
+          <AffliateProgram mockData={MockData}/>
+        </Route>
+        <Route path="/investorInformation">
+          <InvestorInformation mockData={MockData}/>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
